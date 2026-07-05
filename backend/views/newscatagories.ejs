@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title><%=category1%></title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/newscatgories.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+</head>
+<body>
+    <header class="Navigation-bar">
+        <div class="logo-home">
+        <div class="logo">
+            <svg width="50" height="50" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="25" cy="25" r="20" fill="#1976d2" />
+                <path d="M15 25 a1,1 0 0,1 0,-8" stroke="#fff" stroke-width="2" fill="none" />
+                <path d="M20 25 a1,1 0 0,1 0,-12" stroke="#fff" stroke-width="2" fill="none" />
+                <path d="M25 25 a1,1 0 0,1 0,-16" stroke="#fff" stroke-width="2" fill="none" />
+            </svg>
+        </div>
+        <div class="home">
+            <a onclick="location.href = '/'" class="btn">Home</a>
+        </div>
+        </div>
+            <form action="/Categories" method="get" class="menu">
+                <button type="submit" class="btn" name="category" value="world">World</button>
+                <button type="submit" class="btn" name="category" value="nation">Nation</button>
+                <button type="submit" class="btn" name="category" value="business">Business</button>
+                <button type="submit" class="btn" name="category" value="technology">Technology</button>
+                <button type="submit" class="btn" name="category" value="entertainment">Entertainment</button>
+                <button type="submit" class="btn" name="category" value="sports">Sports</button>
+                <button type="submit" class="btn" name="category" value="science">Science</button>
+                <button type="submit" class="btn" name="category" value="health">Health</button>
+            </form>
+        <button class="btn p-1" id="next"><i class="bi bi-caret-left-fill"></i></button>
+        <div class="signup-login">
+            <form action="/signin" method="post">
+                <button type="submit" name="action" value="Login" class="btn">Sign in</button>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div class="catagory">
+            <h1><%=category1%></h1>
+        </div>
+        <div class="news-container">
+            <% data.forEach(data=>{ %>
+            <div class="card">
+                <img src='<%= data.image %>' class="card-img-top" style="height: 10rem;" alt="News Image"> 
+                <div class="card-body">
+                <h5 class="card-title"><%=data.title %></h5>
+                <p class="card-text"><%=data.description%></p>
+                <a href="<%= data.url %>" class="btn btn-primary" target="_blank">Read More</a>
+                </div>
+            </div>
+            <%})%>    
+        </div>
+        <%= console.log(data) %>
+    </main>
+   <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-logo">
+                <h2>📰 EchoTimes</h2>
+                <p>Your daily dose of real-time news around the world.</p>
+            </div>
+
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="/sports">Sports</a></li>
+                    <li><a href="/technology">Technology</a></li>
+                    <li><a href="/business">Business</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-social">
+                <h4>Follow Us</h4>
+                <div class="social-icons">
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2025 NewsFlash. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        document.getElementById('next').addEventListener('click', function() {
+            const categoryconainer=document.querySelector('.menu');
+            categoryconainer.scrollBy({left:75,behavior:'smooth'});
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
