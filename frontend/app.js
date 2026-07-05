@@ -11,7 +11,7 @@ let url='http://localhost:3000/news';
    }
    )
    .then(information => {
-      
+      console.log(information)
       document.getElementById('lodincontainer').style.display='none';
       let a=0;
       let info=information.articles;
