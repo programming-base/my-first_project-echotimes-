@@ -1,5 +1,4 @@
-setTimeout(() => {
-}, 1000);
+
 const date = new Date();
 date.setDate(date.getDate() - 1);
 const formattedDate = date.toISOString().split('T')[0];
@@ -44,9 +43,3 @@ let url='http://localhost:3000/news';
       console.error('Error fetching data:', error);
    });
    
-   async function getCategoryWiseNews(){
-      let category=document.getElementById('category-form');
-      let categoryButton=category.childNodes
-      console.log(categoryButton)
-   }
-   getCategoryWiseNews()
