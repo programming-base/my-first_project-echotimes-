@@ -28,20 +28,22 @@ connection.connect((err) => {
         console.log('✅ Connected to SkySQL successfully!');
     }
 });
-let data = [];
+
 async function news() {
     const apiKey = process.env.API_KEY || "9b20779574aaf74d56d52a691895a888";
     let url = `https://gnews.io/api/v4/top-headlines?lang=en&country=in&apikey=${apiKey}`;
     try {
         const response = await fetch(url);
         const result = await response.json();
-        data = result; // store the full object
+        return result; // store the full object
     } catch (error) {
         console.error("Error fetching news:", error);
+        return []
     }
 }
-news();
-app.get('/news', (req, res) => {
+
+app.get('/news',async  (req, res) => {
+    let data=await news();
     res.json(data);
 })
 app.post('/signin', (req, res) => {
