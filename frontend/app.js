@@ -1,8 +1,11 @@
+setTimeout(() => {
+}, 1000);
 const date = new Date();
 date.setDate(date.getDate() - 1);
 const formattedDate = date.toISOString().split('T')[0];
 // let url = `https://mylearning-p4fu.onrender.com/news`;
 let url='http://localhost:3000/news';
+
    fetch(url)
    .then(response => {
       return response.json();
